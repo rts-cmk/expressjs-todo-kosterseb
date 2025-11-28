@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/rts-cmk/expressjs-todo-kosterseb#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "mongoose": "^9.0.0"
   }
 }
