@@ -1,0 +1,11 @@
+#Logs
+logs/
+node_modules
+pids/
+*.log
+
+#Runtime data
+*.pid
+
+#Environment files
+.env
