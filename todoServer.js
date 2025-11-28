@@ -1,15 +1,20 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+// Load environment variables from .env file
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Built-in middleware to parse JSON (no need for body-parser in Express 5)
+// Middleware
+app.use(cors()); // Allow React frontend to connect
 app.use(express.json());
 
-// MongoDB connection string - replace with your actual credentials
-const DB_URI = 'mongodb+srv://<db_username>:<db_password>@koestercluster.rqhqqyv.mongodb.net/todoApp';
-
+// MongoDB connection string from .env
+const DB_URI = process.env.MONGODB_URI;
 
 // MONGOOSE SCHEMA & MODEL
 
@@ -31,9 +36,8 @@ const todoSchema = new mongoose.Schema({
 
 const Todo = mongoose.model('Todo', todoSchema);
 
-// ============================================
 // CRUD ROUTES
-// ============================================
+
 
 // CREATE - Add a new todo
 app.post('/todos', async (req, res) => {
